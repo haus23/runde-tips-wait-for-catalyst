@@ -1,4 +1,4 @@
-import { LiveReload } from "@remix-run/react";
+import { LiveReload } from '@remix-run/react';
 
 export default function App() {
   return (
