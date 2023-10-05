@@ -1,3 +1,5 @@
+import { LiveReload } from "@remix-run/react";
+
 export default function App() {
   return (
     <html lang="de">
@@ -8,6 +10,7 @@ export default function App() {
       </head>
       <body>
         <h1>runde.tips</h1>
+        <LiveReload />
       </body>
     </html>
   );
