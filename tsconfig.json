@@ -1,14 +1,14 @@
 {
   "include": ["**/*.ts", "**/*.tsx"],
   "compilerOptions": {
-    // Source
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    // Source code
     "jsx": "react-jsx",
 
     // Best practices
     "strict": true,
     "isolatedModules": true,
     "skipLibCheck": true,
+    "verbatimModuleSyntax": true,
 
     // Target (Bundler)
     "module": "ESNext",
