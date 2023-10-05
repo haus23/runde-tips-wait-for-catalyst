@@ -1,12 +1,14 @@
-import { json } from '@remix-run/node';
+import { json, type DataFunctionArgs } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 
 import { db } from '~/utils/server/db.server';
 
-export async function loader() {
+export async function loader({ params }: DataFunctionArgs) {
+  const { championship: slug } = params;
+
   const championship = await db.championship.findFirst({
     orderBy: { nr: 'desc' },
-    where: { published: true },
+    where: { published: true, slug },
   });
 
   if (!championship) {
