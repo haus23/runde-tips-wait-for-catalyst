@@ -1,4 +1,8 @@
-import { LiveReload, Outlet } from '@remix-run/react';
+import type { LinksFunction } from '@remix-run/node';
+import { Links, LiveReload, Outlet } from '@remix-run/react';
+
+import styles from '~/styles/tailwind.css';
+export const links: LinksFunction = () => [{ rel: 'stylesheet', href: styles }];
 
 export default function App() {
   return (
@@ -7,6 +11,7 @@ export default function App() {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>runde.tips</title>
+        <Links />
       </head>
       <body>
         <Outlet />
