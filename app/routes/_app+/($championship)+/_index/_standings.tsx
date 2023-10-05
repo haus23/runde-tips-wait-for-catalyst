@@ -15,16 +15,42 @@ export async function loader({ params }: DataFunctionArgs) {
     throw new Error('No championship found');
   }
 
-  return json(championship);
+  const ranking = await db.player.findMany({
+    where: { championship },
+    orderBy: { rank: 'asc' },
+    include: { user: { select: { name: true, username: true } } },
+  });
+
+  return json({ championship, ranking });
 }
 
 export default function StandingsRoute() {
-  const championship = useLoaderData<typeof loader>();
+  const { championship, ranking } = useLoaderData<typeof loader>();
 
   return (
-    <h2>
-      {championship.completed ? 'Abschlusstabelle' : 'Aktuelle Tabelle'}{' '}
-      {championship.name}
-    </h2>
+    <div>
+      <h2>
+        {championship.completed ? 'Abschlusstabelle' : 'Aktuelle Tabelle'}
+        {championship.name}
+      </h2>
+      <table>
+        <thead>
+          <th>Platz</th>
+          <th>Name</th>
+          {championship.completed && <th>Zusatzpunkte</th>}
+          <th>{championship.completed ? 'Gesamtpunkte' : 'Punkte'}</th>
+        </thead>
+        <tbody>
+          {ranking.map((r) => (
+            <tr key={r.id}>
+              <td>{r.rank}</td>
+              <td>{r.user.name}</td>
+              {championship.completed && <td>{r.extraPoints}</td>}
+              <td>{r.totalPoints}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
