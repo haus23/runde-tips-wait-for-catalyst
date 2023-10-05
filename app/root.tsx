@@ -9,7 +9,6 @@ export default function App() {
         <title>runde.tips</title>
       </head>
       <body>
-        <h1>runde.tips</h1>
         <Outlet />
         <LiveReload />
       </body>
