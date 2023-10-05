@@ -17,6 +17,7 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@radix-ui/colors": "^3.0.0",
     "@remix-run/dev": "^2.0.1",
     "@types/node": "^18.18.3",
     "@types/react": "^18.2.25",

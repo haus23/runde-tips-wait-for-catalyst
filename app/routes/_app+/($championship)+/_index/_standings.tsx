@@ -29,16 +29,18 @@ export default function StandingsRoute() {
 
   return (
     <div>
-      <h2>
+      <h2 className="text-accent-fg">
         {championship.completed ? 'Abschlusstabelle' : 'Aktuelle Tabelle'}
         {championship.name}
       </h2>
       <table>
         <thead>
-          <th>Platz</th>
-          <th>Name</th>
-          {championship.completed && <th>Zusatzpunkte</th>}
-          <th>{championship.completed ? 'Gesamtpunkte' : 'Punkte'}</th>
+          <tr>
+            <th>Platz</th>
+            <th>Name</th>
+            {championship.completed && <th>Zusatzpunkte</th>}
+            <th>{championship.completed ? 'Gesamtpunkte' : 'Punkte'}</th>
+          </tr>
         </thead>
         <tbody>
           {ranking.map((r) => (

@@ -1,3 +1,30 @@
+@import '@radix-ui/colors/sage.css';
+@import '@radix-ui/colors/sage-dark.css';
+@import '@radix-ui/colors/jade.css';
+@import '@radix-ui/colors/jade-dark.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: var(--sage-1);
+    --fg: var(--sage-12);
+
+    --border: var(--sage-7);
+
+    --accent-bg: var(--jade-1);
+    --accent-fg: var(--jade-12);
+
+    --accent-border: var(--jade-7);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-bg text-fg;
+  }
+}
