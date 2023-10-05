@@ -1,5 +1,5 @@
 import { json } from '@remix-run/node';
-import { NavLink, Outlet, useLoaderData } from '@remix-run/react';
+import { Link, NavLink, Outlet, useLoaderData } from '@remix-run/react';
 import { db } from '~/utils/server/db.server';
 
 export async function loader() {
@@ -16,7 +16,9 @@ export default function AppLayout() {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold">runde.tips</h1>
+      <h1 className="text-2xl font-semibold">
+        <Link to="/">runde.tips</Link>
+      </h1>
       <div className="flex gap-x-4">
         {championships.map((c) => (
           <NavLink
