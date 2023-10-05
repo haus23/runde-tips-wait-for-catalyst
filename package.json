@@ -1,5 +1,8 @@
 {
   "name": "@haus23/runde-tips",
   "description": "Tipprunde",
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": "18"
+  }
 }
