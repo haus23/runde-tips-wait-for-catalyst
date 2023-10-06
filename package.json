@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "remix dev",
-    "build": "remix build"
+    "build": "remix build",
+    "start": "remix-serve ./build/index.js"
   },
   "dependencies": {
     "@prisma/client": "^5.4.1",
