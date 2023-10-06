@@ -11,7 +11,7 @@ export async function loader() {
   return json(championships);
 }
 
-export default function AppLayout() {
+export default function FohLayout() {
   const championships = useLoaderData<typeof loader>();
 
   return (
