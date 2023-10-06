@@ -16,7 +16,7 @@ export async function loader({ params }: DataFunctionArgs) {
   }
 
   const ranking = await db.player.findMany({
-    where: { championship },
+    where: { championshipId: championship.id },
     orderBy: { rank: 'asc' },
     include: { user: { select: { name: true, username: true } } },
   });
