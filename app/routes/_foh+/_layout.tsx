@@ -1,6 +1,7 @@
 import { json } from '@remix-run/node';
-import { Link, NavLink, Outlet, useLoaderData } from '@remix-run/react';
+import { Outlet, useLoaderData } from '@remix-run/react';
 import { db } from '~/utils/server/db.server';
+import { Header } from './header';
 
 export async function loader() {
   const championships = await db.championship.findMany({
@@ -8,7 +9,7 @@ export async function loader() {
     where: { published: true },
   });
 
-  return json(championships);
+  return championships;
 }
 
 export default function FohLayout() {
@@ -16,25 +17,10 @@ export default function FohLayout() {
 
   return (
     <div>
-      <div className="border-b">
-        <h1 className="text-2xl font-semibold">
-          <Link to="/">runde.tips</Link>
-        </h1>
-        <div className="flex gap-x-4">
-          {championships.map((c) => (
-            <NavLink
-              key={c.id}
-              to={`/${c.slug}`}
-              className={({ isActive }) =>
-                isActive ? 'text-black' : 'text-gray-600'
-              }
-            >
-              {c.name}
-            </NavLink>
-          ))}
-        </div>
-      </div>
-      <Outlet />
+      <Header />
+      <main className="mx-auto mt-4 max-w-5xl pb-10 sm:mt-6 sm:px-6 lg:px-8 text-fg-subtle">
+        <Outlet />
+      </main>
     </div>
   );
 }
