@@ -10,14 +10,30 @@
 @layer base {
   :root {
     --bg: var(--sage-1);
+    --bg-subtle: var(--sage-2);
+
     --fg: var(--sage-12);
+    --fg-subtle: var(--sage-11);
 
-    --border: var(--sage-7);
+    --ui: var(--sage-3);
+    --ui-hover: var(--sage-4);
+    --ui-active: var(--sage-5);
+    --ui-border: var(--sage-7);
+    --ui-border-hover: var(--sage-8);
 
-    --accent-bg: var(--jade-1);
+    --border: var(--sage-6);
+
     --accent-fg: var(--jade-12);
+    --accent-fg-subtle: var(--jade-11);
 
-    --accent-border: var(--jade-7);
+    --accent-ui: var(--jade-3);
+    --accent-ui-hover: var(--jade-4);
+    --accent-ui-active: var(--jade-5);
+    --accent-ui-border: var(--jade-7);
+    --accent-ui-border-hover: var(--jade-8);
+
+    --accent-ui-solid: var(--jade-9);
+    --accent-ui-solid-hover: var(--jade-10);
   }
 
   * {

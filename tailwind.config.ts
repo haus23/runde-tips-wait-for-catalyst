@@ -13,15 +13,30 @@ export default {
       white: colors.white,
 
       bg: 'var(--bg)',
+      'bg-subtle': 'var(--bg-subtle)',
       fg: 'var(--fg)',
+      'fg-subtle': 'var(--fg-subtle)',
+
+      ui: 'var(--ui)',
+      'ui-hover': 'var(--ui-hover)',
+      'ui-active': 'var(--ui-active)',
+      'ui-border': 'var(--ui-border)',
+      'ui-border-hover': 'var(--ui-border-hover)',
 
       border: 'var(--border)',
 
       accent: {
-        bg: 'var(--accent-bg)',
         fg: 'var(--accent-fg)',
+        'fg-subtle': 'var(--accent--fg-subtle)',
 
-        border: 'var(--accent-border)',
+        ui: 'var(--accent-ui)',
+        'ui-hover': 'var(--accent-ui-hover)',
+        'ui-active': 'var(--accent-ui-active)',
+        'ui-border': 'var(--accent-ui-border)',
+        'ui-border-hover': 'var(--accent-ui-border-hover)',
+
+        'ui-solid': 'var(--accent-ui-solid)',
+        'ui-solid-hover': 'var(--accent-ui-solid-hover)',
       },
     },
   },
