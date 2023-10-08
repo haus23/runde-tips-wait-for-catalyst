@@ -13,3 +13,5 @@ Implementierung:
   dass ein entsprechendes Cookie gesetzt ist bzw. wird
 
 - Schritt 2: Auslesen des Client-Hint Cookie im Root Loader und setzen des Themes
+
+- Schritt 3: Überwachen des Color-Modes auf Browser-seitige Änderungen

@@ -1,3 +1,6 @@
+import { useRevalidator } from '@remix-run/react';
+import { useEffect } from 'react';
+
 const clientHints = {
   theme: {
     cookieName: 'CH-prefers-color-scheme',
@@ -15,6 +18,22 @@ type ClientHintNames = keyof typeof clientHints;
 // dass ein entsprechendes Cookie gesetzt ist bzw. wird
 
 export function ClientHintCheck() {
+  // Dark Mode Schritt 3: Überwachen des Color-Modes auf Browser-seitige Änderungen
+  const { revalidate } = useRevalidator();
+  useEffect(() => {
+    const themeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    function handleThemeChange() {
+      document.cookie = `${clientHints.theme.cookieName}=${
+        themeQuery.matches ? 'dark' : 'light'
+      }`;
+      revalidate();
+    }
+    themeQuery.addEventListener('change', handleThemeChange);
+    return () => {
+      themeQuery.removeEventListener('change', handleThemeChange);
+    };
+  }, [revalidate]);
+
   return (
     <script
       dangerouslySetInnerHTML={{
