@@ -9,6 +9,11 @@ const clientHints = {
   },
 };
 
+type ClientHintNames = keyof typeof clientHints;
+
+// Dark Mode Schritt 1: Script das den aktuell gewünschten Color-Mode des Browsers ausliest und sicherstellt,
+// dass ein entsprechendes Cookie gesetzt ist bzw. wird
+
 export function ClientHintCheck() {
   return (
     <script
@@ -40,5 +45,52 @@ export function ClientHintCheck() {
     `,
       }}
     ></script>
+  );
+}
+
+// Dark Mode Schritt 2: - Schritt 2: Auslesen des Client-Hint Cookie
+
+function getCookieValue(cookieString: string, name: ClientHintNames) {
+  const hint = clientHints[name];
+  if (!hint) {
+    throw new Error(`Unknown client hint: ${name}`);
+  }
+  const value = cookieString
+    .split(';')
+    .map((c) => c.trim())
+    .find((c) => c.startsWith(hint.cookieName + '='))
+    ?.split('=')[1];
+
+  return value ? decodeURIComponent(value) : null;
+}
+
+/**
+ *
+ * @param request {Request} - optional request object (only used on server)
+ * @returns an object with the client hints and their values
+ */
+export function getHints(request?: Request) {
+  const cookieString =
+    typeof document !== 'undefined'
+      ? document.cookie
+      : typeof request !== 'undefined'
+      ? request.headers.get('Cookie') ?? ''
+      : '';
+
+  return Object.entries(clientHints).reduce(
+    (acc, [name, hint]) => {
+      const hintName = name as ClientHintNames;
+      acc[hintName] = hint.transform(
+        getCookieValue(cookieString, hintName) ?? hint.fallback
+      );
+      return acc;
+    },
+    {} as {
+      [name in ClientHintNames]: (typeof clientHints)[name] extends {
+        transform: (value: any) => infer ReturnValue;
+      }
+        ? ReturnValue
+        : (typeof clientHints)[name]['fallback'];
+    }
   );
 }

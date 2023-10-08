@@ -11,3 +11,5 @@ Implementierung:
 
 - Schritt 1: Script das den aktuell gewünschten Color-Mode des Browsers ausliest und sicherstellt,
   dass ein entsprechendes Cookie gesetzt ist bzw. wird
+
+- Schritt 2: Auslesen des Client-Hint Cookie im Root Loader und setzen des Themes
