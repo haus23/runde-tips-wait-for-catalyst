@@ -1,5 +1,6 @@
 import { useRevalidator } from '@remix-run/react';
 import { useEffect } from 'react';
+import { useRequestInfo } from './hooks/use-request-info';
 
 const clientHints = {
   theme: {
@@ -112,4 +113,11 @@ export function getHints(request?: Request) {
         : (typeof clientHints)[name]['fallback'];
     }
   );
+}
+
+// Schritt 4: Bereitstellung in der App
+
+export function useHints() {
+  const { hints } = useRequestInfo();
+  return hints;
 }

@@ -13,6 +13,7 @@ import { Icon } from '~/components/(ui)/icon';
 
 import LogoImage from '~/assets/logo.svg';
 import { useChampionships } from '~/utils/hooks/use-championships';
+import { ColorSchemeSwitch } from '~/components/color-scheme-switch';
 
 const navItems = [
   { label: 'Tabelle', viewSegment: '' },
@@ -91,7 +92,7 @@ export function NavMobile() {
                       <Icon name="close" />
                     </Button>
                   </div>
-                  <nav className="flex flex-col p-2">
+                  <nav className="flex flex-col p-2 border-b">
                     {navItems.map((item, ix) => {
                       const href = `/${[championshipSegment, item.viewSegment]
                         .filter(Boolean)
@@ -112,6 +113,12 @@ export function NavMobile() {
                       );
                     })}
                   </nav>
+                  <div className="flex flex-col p-2">
+                    <div className="flex items-center justify-between pl-5 py-1 mb-1">
+                      <span>Hell/Dunkel-Modus</span>
+                      <ColorSchemeSwitch />
+                    </div>
+                  </div>
                 </div>
               )}
             </Dialog>

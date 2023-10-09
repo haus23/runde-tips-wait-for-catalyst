@@ -15,3 +15,5 @@ Implementierung:
 - Schritt 2: Auslesen des Client-Hint Cookie im Root Loader und setzen des Themes
 
 - Schritt 3: Überwachen des Color-Modes auf Browser-seitige Änderungen
+
+- Schritt 4: ColorSchemeSwitch implementieren - noch ohne Wechselfunktion
