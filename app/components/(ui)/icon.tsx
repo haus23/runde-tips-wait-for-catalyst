@@ -2,8 +2,8 @@ import type { SVGProps } from 'react';
 import iconFile from '~/assets/icons.svg';
 import { cn } from '~/utils/misc';
 
-const icons = ['close', 'menu', 'moon', 'sun'] as const;
-type IconName = (typeof icons)[number];
+const icons = ['close', 'computer', 'menu', 'moon', 'sun'] as const;
+export type IconName = (typeof icons)[number];
 
 export function Icon({
   name,
