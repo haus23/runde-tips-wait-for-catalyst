@@ -27,7 +27,7 @@ export default {
 
       accent: {
         fg: 'var(--accent-fg)',
-        'fg-subtle': 'var(--accent--fg-subtle)',
+        'fg-subtle': 'var(--accent-fg-subtle)',
 
         ui: 'var(--accent-ui)',
         'ui-hover': 'var(--accent-ui-hover)',
