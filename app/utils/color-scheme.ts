@@ -1,10 +1,14 @@
-import { useHints } from './client-hints';
+import { useRequestInfo } from './hooks/use-request-info';
 
 export function useTheme() {
-  const hints = useHints();
+  const requestInfo = useRequestInfo();
 
-  return { theme: hints.theme, userSelected: false } satisfies {
-    theme: typeof hints.theme;
-    userSelected: boolean;
+  const wantedTheme =
+    requestInfo.userPrefs.theme ??
+    (requestInfo.hints.theme as 'light' | 'dark');
+
+  return {
+    theme: wantedTheme,
+    userSelected: requestInfo.userPrefs.theme !== undefined,
   };
 }

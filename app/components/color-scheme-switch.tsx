@@ -8,8 +8,9 @@ import {
 import { Button } from './(ui)/button';
 import { Icon, type IconName } from './(ui)/icon';
 import { useTheme } from '~/utils/color-scheme';
-import { useReducer, useState, type Key } from 'react';
+import { type Key } from 'react';
 import { invariant } from '~/utils/misc';
+import { useFetcher } from '@remix-run/react';
 
 const options = [
   {
@@ -31,6 +32,7 @@ const options = [
 
 export function ColorSchemeSwitch() {
   const { theme, userSelected } = useTheme();
+  const fetcher = useFetcher();
 
   const selectedTheme: Selection = new Set([userSelected ? theme : 'system']);
   function setSelectedTheme(themeSelection: Key) {
@@ -38,7 +40,10 @@ export function ColorSchemeSwitch() {
       typeof themeSelection === 'string',
       'Not possible to select all themes'
     );
-    console.log(themeSelection);
+    fetcher.submit(
+      { theme: themeSelection },
+      { method: 'POST', action: '/resource/theme' }
+    );
   }
 
   return (

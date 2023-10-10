@@ -114,10 +114,3 @@ export function getHints(request?: Request) {
     }
   );
 }
-
-// Schritt 4: Bereitstellung in der App
-
-export function useHints() {
-  const { hints } = useRequestInfo();
-  return hints;
-}
