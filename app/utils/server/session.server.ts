@@ -1,6 +1,9 @@
+import type { Theme } from '#utils/theme';
 import { createCookieSessionStorage } from '@remix-run/node';
 
-type SessionData = {};
+type SessionData = {
+  theme: Theme;
+};
 
 const { getSession, commitSession } = createCookieSessionStorage<SessionData>({
   cookie: {
