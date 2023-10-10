@@ -4,6 +4,9 @@
   "version": "0.0.2",
   "license": "MIT",
   "type": "module",
+  "imports": {
+    "#*": "./app/*"
+  },
   "scripts": {
     "dev": "remix dev",
     "build": "remix build",
