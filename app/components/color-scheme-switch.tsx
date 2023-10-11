@@ -41,7 +41,7 @@ export function ColorSchemeSwitch() {
       'Not possible to select all themes'
     );
     fetcher.submit(
-      { theme: themeSelection },
+      { colorScheme: themeSelection },
       { method: 'POST', action: '/resource/theme' }
     );
   }

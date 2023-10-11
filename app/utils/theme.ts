@@ -1,9 +1,13 @@
+import { z } from 'zod';
 const colorSchemeNames = ['light', 'dark'] as const;
-type ColorScheme = (typeof colorSchemeNames)[number];
 
-type Theme = {
-  themeColor: 'default';
-  colorScheme: ColorScheme;
-};
+const ColorScheme = z.literal('light').or(z.literal('dark'));
+type ColorScheme = z.infer<typeof ColorScheme>;
 
-export { type Theme };
+const Theme = z.object({
+  themeColor: z.literal('default'),
+  colorScheme: ColorScheme.optional(),
+});
+type Theme = z.infer<typeof Theme>;
+
+export { ColorScheme, Theme };

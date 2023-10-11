@@ -1,28 +1,24 @@
+import { commitSession, getSession } from '#utils/server/session.server';
+import { ColorScheme } from '#utils/theme';
 import { json, type ActionFunctionArgs } from '@remix-run/node';
-import { invariant } from '~/utils/misc';
-import { userPrefs } from '~/utils/server/user-prefs.server';
+import { z } from 'zod';
+
+const RequestedColorScheme = ColorScheme.or(z.literal('system'));
 
 export async function action({ request }: ActionFunctionArgs) {
-  let cookieHeader = request.headers.get('Cookie');
-  const cookie = (await userPrefs.parse(cookieHeader)) || {};
+  const session = await getSession(request.headers.get('Cookie'));
+
+  // Parsing the body
   const bodyParams = await request.formData();
+  const colorScheme = RequestedColorScheme.parse(bodyParams.get('colorScheme'));
 
-  const theme = bodyParams.get('theme');
-  invariant(
-    theme !== null && typeof theme === 'string',
-    'No theme setting in request body'
-  );
+  const themeColor = 'default';
+  const effectiveColorScheme =
+    colorScheme === 'system' ? undefined : colorScheme;
 
-  if (theme === 'system') {
-    cookieHeader = await userPrefs.serialize('', {
-      expires: new Date(0),
-    });
-  } else {
-    invariant(
-      ['light', 'dark'].includes(theme),
-      'Unknown theme setting in request body'
-    );
-    cookieHeader = await userPrefs.serialize({ ...cookie, theme });
-  }
-  return json(null, { headers: { 'Set-Cookie': cookieHeader } });
+  session.set('theme', { themeColor, colorScheme: effectiveColorScheme });
+
+  return json(null, {
+    headers: { 'Set-Cookie': await commitSession(session) },
+  });
 }
