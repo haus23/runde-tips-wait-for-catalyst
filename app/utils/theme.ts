@@ -2,7 +2,6 @@ import { z } from 'zod';
 import { useRouteLoaderData } from '@remix-run/react';
 import { loader } from '#root';
 import { invariant } from './misc';
-const colorSchemeNames = ['light', 'dark'] as const;
 
 const ColorScheme = z.literal('light').or(z.literal('dark'));
 type ColorScheme = z.infer<typeof ColorScheme>;
@@ -23,7 +22,7 @@ function useTheme() {
       'default',
     colorScheme:
       rootLoaderData.requestInfo.userSession.data.theme?.colorScheme ||
-      rootLoaderData.requestInfo.clientHints.theme,
+      rootLoaderData.requestInfo.clientHints.colorScheme,
     userRequested:
       typeof rootLoaderData.requestInfo.userSession.data.theme?.colorScheme !==
       'undefined',
