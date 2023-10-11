@@ -8,7 +8,6 @@ import {
   LiveReload,
   Outlet,
   Scripts,
-  useLoaderData,
   useNavigate,
 } from '@remix-run/react';
 import { RouterProvider } from 'react-aria-components';
@@ -16,27 +15,26 @@ import { RouterProvider } from 'react-aria-components';
 import { ClientHintCheck, getHints } from './utils/client-hints';
 
 import styles from '~/styles/tailwind.css';
-import { getTheme } from './utils/server/user-prefs.server';
-import { useTheme } from './utils/color-scheme';
+import { getSession } from '#utils/server/session.server';
+import { useTheme } from '#utils/theme';
+
 export const links: LinksFunction = () => [{ rel: 'stylesheet', href: styles }];
 
 export async function loader({ request }: LoaderFunctionArgs) {
   return json({
     requestInfo: {
-      hints: getHints(request),
-      userPrefs: {
-        theme: await getTheme(request),
-      },
+      clientHints: getHints(request),
+      userSession: await getSession(request),
     },
   });
 }
 
 export default function App() {
   const navigate = useNavigate();
-  const { theme } = useTheme();
+  const { colorScheme } = useTheme();
 
   return (
-    <html lang="de" className={theme}>
+    <html lang="de" className={colorScheme}>
       <head>
         <meta charSet="utf-8" />
         <ClientHintCheck />

@@ -6,7 +6,7 @@ import { z } from 'zod';
 const RequestedColorScheme = ColorScheme.or(z.literal('system'));
 
 export async function action({ request }: ActionFunctionArgs) {
-  const session = await getSession(request.headers.get('Cookie'));
+  const session = await getSession(request);
 
   // Parsing the body
   const bodyParams = await request.formData();

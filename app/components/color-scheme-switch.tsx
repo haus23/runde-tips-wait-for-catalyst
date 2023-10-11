@@ -7,10 +7,10 @@ import {
 } from 'react-aria-components';
 import { Button } from './(ui)/button';
 import { Icon, type IconName } from './(ui)/icon';
-import { useTheme } from '~/utils/color-scheme';
 import { type Key } from 'react';
 import { invariant } from '~/utils/misc';
 import { useFetcher } from '@remix-run/react';
+import { useTheme } from '#utils/theme';
 
 const options = [
   {
@@ -31,10 +31,12 @@ const options = [
 ] satisfies { id: string; label: string; iconName: IconName }[];
 
 export function ColorSchemeSwitch() {
-  const { theme, userSelected } = useTheme();
+  const { colorScheme, userRequested } = useTheme();
   const fetcher = useFetcher();
 
-  const selectedTheme: Selection = new Set([userSelected ? theme : 'system']);
+  const selectedTheme: Selection = new Set([
+    userRequested ? colorScheme : 'system',
+  ]);
   function setSelectedTheme(themeSelection: Key) {
     invariant(
       typeof themeSelection === 'string',
@@ -51,10 +53,10 @@ export function ColorSchemeSwitch() {
       <Button
         aria-label="Farbschema wechseln"
         variant="toolbar"
-        className={userSelected ? 'text-fg' : 'text-fg-subtle'}
+        className={userRequested ? 'text-fg' : 'text-fg-subtle'}
       >
-        {theme === 'light' && <Icon name="sun" />}
-        {theme === 'dark' && <Icon name="moon" />}
+        {colorScheme === 'light' && <Icon name="sun" />}
+        {colorScheme === 'dark' && <Icon name="moon" />}
       </Button>
       <Popover>
         <Menu

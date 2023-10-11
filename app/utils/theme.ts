@@ -1,4 +1,7 @@
 import { z } from 'zod';
+import { useRouteLoaderData } from '@remix-run/react';
+import { loader } from '#root';
+import { invariant } from './misc';
 const colorSchemeNames = ['light', 'dark'] as const;
 
 const ColorScheme = z.literal('light').or(z.literal('dark'));
@@ -10,4 +13,21 @@ const Theme = z.object({
 });
 type Theme = z.infer<typeof Theme>;
 
-export { ColorScheme, Theme };
+function useTheme() {
+  const rootLoaderData = useRouteLoaderData<typeof loader>('root');
+  invariant(rootLoaderData !== undefined, 'No root route data present');
+
+  return {
+    themeColor:
+      rootLoaderData.requestInfo.userSession.data.theme?.themeColor ||
+      'default',
+    colorScheme:
+      rootLoaderData.requestInfo.userSession.data.theme?.colorScheme ||
+      rootLoaderData.requestInfo.clientHints.theme,
+    userRequested:
+      typeof rootLoaderData.requestInfo.userSession.data.theme?.colorScheme !==
+      'undefined',
+  };
+}
+
+export { ColorScheme, Theme, useTheme };

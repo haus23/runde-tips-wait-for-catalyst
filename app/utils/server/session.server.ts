@@ -5,10 +5,15 @@ type SessionData = {
   theme: Theme;
 };
 
-const { getSession, commitSession } = createCookieSessionStorage<SessionData>({
-  cookie: {
-    name: 'runde-tips-session',
-  },
-});
+const { getSession: getRawSession, commitSession } =
+  createCookieSessionStorage<SessionData>({
+    cookie: {
+      name: 'runde-tips-session',
+    },
+  });
+
+async function getSession(request: Request) {
+  return getRawSession(request.headers.get('Cookie'));
+}
 
 export { getSession, commitSession };
