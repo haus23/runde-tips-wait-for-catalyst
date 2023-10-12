@@ -5,6 +5,7 @@ export default {
   importOrder: [
     '^react$',
     '^@remix-run/',
+    '',
     '<THIRD_PARTY_MODULES>',
     '',
     '#',
