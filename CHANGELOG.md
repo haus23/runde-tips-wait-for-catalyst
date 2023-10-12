@@ -1,6 +1,36 @@
 # Changelog
 
 
+## v0.0.3
+
+[compare changes](https://github.com/haus23/runde-tips/compare/v0.0.2...v0.0.3)
+
+### 🩹 Fixes
+
+- Remove unused file. ([77ea71d](https://github.com/haus23/runde-tips/commit/77ea71d))
+
+### 💅 Refactors
+
+- Add zod and define a validateable theme type. ([8b0a9aa](https://github.com/haus23/runde-tips/commit/8b0a9aa))
+- Adapt the new theme config / type ([2cdf847](https://github.com/haus23/runde-tips/commit/2cdf847))
+- Align namning, resolves #15 and resolves #16 ([#15](https://github.com/haus23/runde-tips/issues/15), [#16](https://github.com/haus23/runde-tips/issues/16))
+
+### 🏡 Chore
+
+- Add an empty session. ([8dfab44](https://github.com/haus23/runde-tips/commit/8dfab44))
+- **dx:** Configure node imports. See #6. Will be solved, after removing old alias ([#6](https://github.com/haus23/runde-tips/issues/6))
+- Start defining a proper theme config. See #15 and #16 ([#15](https://github.com/haus23/runde-tips/issues/15), [#16](https://github.com/haus23/runde-tips/issues/16))
+- **dx:** Add local prettier and configure imports sorting. Resolves #5 ([#5](https://github.com/haus23/runde-tips/issues/5))
+- Format code with sorted imports. ([61e5344](https://github.com/haus23/runde-tips/commit/61e5344))
+- **dx:** Remove old path alias ([9a37f7c](https://github.com/haus23/runde-tips/commit/9a37f7c))
+- **dx:** Seperate react and remix imports ([511be4e](https://github.com/haus23/runde-tips/commit/511be4e))
+- Format code with sorted imports. ([e53dd47](https://github.com/haus23/runde-tips/commit/e53dd47))
+- **dx:** Add tailwind class sorting. Resolves #7 ([#7](https://github.com/haus23/runde-tips/issues/7))
+
+### ❤️ Contributors
+
+- Micha Buchholz <micha@haus23.net>
+
 ## v0.0.2
 
 [compare changes](https://github.com/haus23/runde-tips/compare/v0.0.1...v0.0.2)
