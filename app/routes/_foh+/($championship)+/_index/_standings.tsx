@@ -1,7 +1,7 @@
 import { json, type DataFunctionArgs } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 
-import { db } from '~/utils/server/db.server';
+import { db } from '#utils/server/db.server';
 
 export async function loader({ params }: DataFunctionArgs) {
   const { championship: slug } = params;

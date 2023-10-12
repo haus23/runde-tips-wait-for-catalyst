@@ -1,5 +1,5 @@
-import { useLocation, useParams, useRouteLoaderData } from '@remix-run/react';
 import { useEffect, useState } from 'react';
+import { useLocation, useParams } from '@remix-run/react';
 
 import {
   Dialog,
@@ -8,12 +8,12 @@ import {
   Modal,
   ModalOverlay,
 } from 'react-aria-components';
-import { Button } from '~/components/(ui)/button';
-import { Icon } from '~/components/(ui)/icon';
 
-import LogoImage from '~/assets/logo.svg';
-import { useChampionships } from '~/utils/hooks/use-championships';
-import { ColorSchemeSwitch } from '~/components/color-scheme-switch';
+import LogoImage from '#assets/logo.svg';
+import { Button } from '#components/(ui)/button';
+import { Icon } from '#components/(ui)/icon';
+import { ColorSchemeSwitch } from '#components/color-scheme-switch';
+import { useChampionships } from '#utils/hooks/use-championships';
 
 const navItems = [
   { label: 'Tabelle', viewSegment: '' },
@@ -57,7 +57,7 @@ export function NavMobile() {
 
   return (
     <div className="flex h-full sm:hidden">
-      <div className="flex gap-x-2 items-center">
+      <div className="flex items-center gap-x-2">
         <Button
           onPress={delayedOpen}
           aria-label="Öffne Hauptmenu"
@@ -76,10 +76,10 @@ export function NavMobile() {
               {({ close }) => (
                 <div className="flex flex-col font-medium">
                   <Heading className="sr-only">Hauptmenü</Heading>
-                  <div className="flex items-center justify-between p-2 border-b">
+                  <div className="flex items-center justify-between border-b p-2">
                     <Link
                       href="/"
-                      className="rounded focus:outline-none focus-visible:ring-offset-bg focus-visible:ring-2 focus-visible:ring-ui-border focus-visible:ring-offset-2"
+                      className="rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-ui-border focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
                     >
                       <div className="flex items-center gap-x-1 pr-1">
                         <svg className="h-12 w-12 fill-current">
@@ -92,7 +92,7 @@ export function NavMobile() {
                       <Icon name="close" />
                     </Button>
                   </div>
-                  <nav className="flex flex-col p-2 border-b">
+                  <nav className="flex flex-col border-b p-2">
                     {navItems.map((item, ix) => {
                       const href = `/${[championshipSegment, item.viewSegment]
                         .filter(Boolean)
@@ -104,9 +104,9 @@ export function NavMobile() {
                             href === location.pathname ? 'page' : null
                           }
                           href={href}
-                          className="border-l-4 border-transparent hover:border-ui-border-hover aria-[current=page]:border-accent-ui-border-hover
-                          rounded focus:outline-none focus-visible:ring-offset-bg focus-visible:ring-2 focus-visible:ring-ui-border focus-visible:ring-offset-2
-                          px-4 py-2 my-1 first:mt-0"
+                          className="my-1 rounded border-l-4 border-transparent
+                          px-4 py-2 first:mt-0 hover:border-ui-border-hover focus:outline-none focus-visible:ring-2
+                          focus-visible:ring-ui-border focus-visible:ring-offset-2 focus-visible:ring-offset-bg aria-[current=page]:border-accent-ui-border-hover"
                         >
                           {item.label}
                         </Link>
@@ -114,7 +114,7 @@ export function NavMobile() {
                     })}
                   </nav>
                   <div className="flex flex-col p-2">
-                    <div className="flex items-center justify-between pl-5 py-1 mb-1">
+                    <div className="mb-1 flex items-center justify-between py-1 pl-5">
                       <span>Hell/Dunkel-Modus</span>
                       <ColorSchemeSwitch />
                     </div>

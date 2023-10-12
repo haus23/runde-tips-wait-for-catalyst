@@ -1,9 +1,8 @@
-import { useRevalidator } from '@remix-run/react';
 import { useEffect } from 'react';
-import { useRequestInfo } from './hooks/use-request-info';
+import { useRevalidator } from '@remix-run/react';
 
 const clientHints = {
-  theme: {
+  colorScheme: {
     cookieName: 'CH-prefers-color-scheme',
     getValueCode: `window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'`,
     fallback: 'light',
@@ -24,7 +23,7 @@ export function ClientHintCheck() {
   useEffect(() => {
     const themeQuery = window.matchMedia('(prefers-color-scheme: dark)');
     function handleThemeChange() {
-      document.cookie = `${clientHints.theme.cookieName}=${
+      document.cookie = `${clientHints.colorScheme.cookieName}=${
         themeQuery.matches ? 'dark' : 'light'
       }`;
       revalidate();
@@ -101,7 +100,7 @@ export function getHints(request?: Request) {
     (acc, [name, hint]) => {
       const hintName = name as ClientHintNames;
       acc[hintName] = hint.transform(
-        getCookieValue(cookieString, hintName) ?? hint.fallback
+        getCookieValue(cookieString, hintName) ?? hint.fallback,
       );
       return acc;
     },
@@ -111,6 +110,6 @@ export function getHints(request?: Request) {
       }
         ? ReturnValue
         : (typeof clientHints)[name]['fallback'];
-    }
+    },
   );
 }

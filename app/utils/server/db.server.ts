@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+
 import { singleton } from './singleton.server';
 
 export const db = singleton(
@@ -6,5 +7,5 @@ export const db = singleton(
   () =>
     new PrismaClient({
       log: ['query', 'warn', 'error'],
-    })
+    }),
 );
