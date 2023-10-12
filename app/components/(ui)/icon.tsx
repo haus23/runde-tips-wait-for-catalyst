@@ -1,6 +1,7 @@
 import type { SVGProps } from 'react';
-import iconFile from '~/assets/icons.svg';
-import { cn } from '~/utils/misc';
+
+import iconFile from '#assets/icons.svg';
+import { cn } from '#utils/misc';
 
 const icons = ['close', 'computer', 'menu', 'moon', 'sun'] as const;
 export type IconName = (typeof icons)[number];

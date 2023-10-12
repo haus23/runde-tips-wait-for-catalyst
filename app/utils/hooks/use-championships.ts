@@ -1,5 +1,6 @@
 import { useRouteLoaderData } from '@remix-run/react';
-import type { loader } from '~/routes/_foh+/_layout';
+
+import type { loader } from '#routes/_foh+/_layout';
 
 import { invariant } from '../misc';
 

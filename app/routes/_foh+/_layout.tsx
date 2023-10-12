@@ -1,6 +1,6 @@
-import { json } from '@remix-run/node';
 import { Outlet, useLoaderData } from '@remix-run/react';
-import { db } from '~/utils/server/db.server';
+
+import { db } from '#utils/server/db.server';
 
 import { Header } from './header';
 

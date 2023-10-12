@@ -1,10 +1,12 @@
 import { forwardRef } from 'react';
-import { cn } from '~/utils/misc';
+
 import { cva, type VariantProps } from 'cva';
 import {
   Button as AriaButton,
   type ButtonProps as AriaButtonProps,
 } from 'react-aria-components';
+
+import { cn } from '#utils/misc';
 
 const buttonVariants = cva(
   `inline-flex items-center justify-center font-medium px-4 py-2 rounded-md
