@@ -1,16 +1,18 @@
+import { type Key } from 'react';
+import { useFetcher } from '@remix-run/react';
+import { invariant } from '~/utils/misc';
 import {
+  Item,
+  Menu,
   MenuTrigger,
   Popover,
-  Menu,
-  Item,
   type Selection,
 } from 'react-aria-components';
+
+import { useTheme } from '#utils/theme';
+
 import { Button } from './(ui)/button';
 import { Icon, type IconName } from './(ui)/icon';
-import { type Key } from 'react';
-import { invariant } from '~/utils/misc';
-import { useFetcher } from '@remix-run/react';
-import { useTheme } from '#utils/theme';
 
 const options = [
   {
@@ -40,11 +42,11 @@ export function ColorSchemeSwitch() {
   function setSelectedTheme(themeSelection: Key) {
     invariant(
       typeof themeSelection === 'string',
-      'Not possible to select all themes'
+      'Not possible to select all themes',
     );
     fetcher.submit(
       { colorScheme: themeSelection },
-      { method: 'POST', action: '/resource/theme' }
+      { method: 'POST', action: '/resource/theme' },
     );
   }
 

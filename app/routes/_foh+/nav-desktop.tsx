@@ -1,8 +1,7 @@
 import { useLocation, useParams } from '@remix-run/react';
-import { Link } from 'react-aria-components';
-
 import LogoImage from '~/assets/logo.svg';
 import { ColorSchemeSwitch } from '~/components/color-scheme-switch';
+import { Link } from 'react-aria-components';
 
 const navItems = [
   { label: 'Tabelle', viewSegment: '' },

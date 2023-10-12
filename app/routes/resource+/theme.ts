@@ -1,7 +1,8 @@
-import { commitSession, getSession } from '#utils/server/session.server';
-import { ColorScheme } from '#utils/theme';
 import { json, type ActionFunctionArgs } from '@remix-run/node';
 import { z } from 'zod';
+
+import { commitSession, getSession } from '#utils/server/session.server';
+import { ColorScheme } from '#utils/theme';
 
 const RequestedColorScheme = ColorScheme.or(z.literal('system'));
 

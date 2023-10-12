@@ -10,13 +10,13 @@ import {
   Scripts,
   useNavigate,
 } from '@remix-run/react';
+import styles from '~/styles/tailwind.css';
 import { RouterProvider } from 'react-aria-components';
 
-import { ClientHintCheck, getHints } from './utils/client-hints';
-
-import styles from '~/styles/tailwind.css';
 import { getSession } from '#utils/server/session.server';
 import { useTheme } from '#utils/theme';
+
+import { ClientHintCheck, getHints } from './utils/client-hints';
 
 export const links: LinksFunction = () => [{ rel: 'stylesheet', href: styles }];
 

@@ -1,6 +1,10 @@
-import { useLocation, useParams, useRouteLoaderData } from '@remix-run/react';
 import { useEffect, useState } from 'react';
-
+import { useLocation, useParams, useRouteLoaderData } from '@remix-run/react';
+import LogoImage from '~/assets/logo.svg';
+import { Button } from '~/components/(ui)/button';
+import { Icon } from '~/components/(ui)/icon';
+import { ColorSchemeSwitch } from '~/components/color-scheme-switch';
+import { useChampionships } from '~/utils/hooks/use-championships';
 import {
   Dialog,
   Heading,
@@ -8,12 +12,6 @@ import {
   Modal,
   ModalOverlay,
 } from 'react-aria-components';
-import { Button } from '~/components/(ui)/button';
-import { Icon } from '~/components/(ui)/icon';
-
-import LogoImage from '~/assets/logo.svg';
-import { useChampionships } from '~/utils/hooks/use-championships';
-import { ColorSchemeSwitch } from '~/components/color-scheme-switch';
 
 const navItems = [
   { label: 'Tabelle', viewSegment: '' },

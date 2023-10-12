@@ -1,6 +1,8 @@
-import { z } from 'zod';
 import { useRouteLoaderData } from '@remix-run/react';
+import { z } from 'zod';
+
 import { loader } from '#root';
+
 import { invariant } from './misc';
 
 const ColorScheme = z.literal('light').or(z.literal('dark'));

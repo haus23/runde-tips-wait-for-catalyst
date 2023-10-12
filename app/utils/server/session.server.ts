@@ -1,5 +1,6 @@
-import type { Theme } from '#utils/theme';
 import { createCookieSessionStorage } from '@remix-run/node';
+
+import type { Theme } from '#utils/theme';
 
 type SessionData = {
   theme: Theme;

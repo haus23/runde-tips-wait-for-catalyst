@@ -1,5 +1,5 @@
-import { useRevalidator } from '@remix-run/react';
 import { useEffect } from 'react';
+import { useRevalidator } from '@remix-run/react';
 
 const clientHints = {
   colorScheme: {
@@ -100,7 +100,7 @@ export function getHints(request?: Request) {
     (acc, [name, hint]) => {
       const hintName = name as ClientHintNames;
       acc[hintName] = hint.transform(
-        getCookieValue(cookieString, hintName) ?? hint.fallback
+        getCookieValue(cookieString, hintName) ?? hint.fallback,
       );
       return acc;
     },
@@ -110,6 +110,6 @@ export function getHints(request?: Request) {
       }
         ? ReturnValue
         : (typeof clientHints)[name]['fallback'];
-    }
+    },
   );
 }
