@@ -14,7 +14,7 @@ export function Icon({
   name: IconName;
 }) {
   return (
-    <svg {...props} className={cn('h-6 w-6 inline self-center', className)}>
+    <svg {...props} className={cn('inline h-6 w-6 self-center', className)}>
       <use href={`${iconFile}#${name}`} />
     </svg>
   );

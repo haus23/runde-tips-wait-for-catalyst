@@ -13,5 +13,10 @@ export default {
     '^[.]',
   ],
   importOrderTypeScriptVersion: '5.2.0',
-  plugins: ['@ianvs/prettier-plugin-sort-imports'],
+  tailwindFunctions: ['cva', 'cn'],
+  plugins: [
+    '@ianvs/prettier-plugin-sort-imports',
+    // Should be last in the list
+    'prettier-plugin-tailwindcss',
+  ],
 };

@@ -63,7 +63,7 @@ export function ColorSchemeSwitch() {
       </Button>
       <Popover>
         <Menu
-          className="flex flex-col gap-y-2 p-2 bg-bg-subtle border-ui-border border text-fg-subtle rounded"
+          className="flex flex-col gap-y-2 rounded border border-ui-border bg-bg-subtle p-2 text-fg-subtle"
           selectionMode="single"
           selectedKeys={selectedTheme}
           onAction={setSelectedTheme}
@@ -73,9 +73,9 @@ export function ColorSchemeSwitch() {
               key={o.id}
               id={o.id}
               textValue={o.label}
-              className="flex items-center gap-x-2 px-4 py-1
-              data-[focused]:outline-none data-[focused]:bg-ui-hover rounded data-[focused]:text-fg
-              data-[selected]:text-accent-fg-subtle data-[selected]:data-[focused]:text-accent-fg
+              className="flex items-center gap-x-2 rounded px-4 py-1
+              data-[focused]:bg-ui-hover data-[focused]:text-fg data-[selected]:data-[focused]:text-accent-fg
+              data-[selected]:text-accent-fg-subtle data-[focused]:outline-none
               "
             >
               <Icon name={o.iconName} />

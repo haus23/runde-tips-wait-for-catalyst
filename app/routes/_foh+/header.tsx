@@ -3,7 +3,7 @@ import { NavMobile } from './nav-mobile';
 
 export function Header() {
   return (
-    <header className="h-16 border-b shadow px-2 sm:px-4 bg-bg-subtle">
+    <header className="h-16 border-b bg-bg-subtle px-2 shadow sm:px-4">
       <NavMobile />
       <NavDesktop />
     </header>
