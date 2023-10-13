@@ -12,7 +12,7 @@ import {
 import LogoImage from '#assets/logo.svg';
 import { Button } from '#components/(ui)/button';
 import { Icon } from '#components/(ui)/icon';
-import { ColorSchemeSwitch } from '#components/color-scheme-switch';
+import { ColorSchemeMenu } from '#components/color-scheme-menu';
 import { useChampionships } from '#utils/hooks/use-championships';
 
 const navItems = [
@@ -116,7 +116,7 @@ export function NavMobile() {
                   <div className="flex flex-col p-2">
                     <div className="mb-1 flex items-center justify-between py-1 pl-5">
                       <span>Hell/Dunkel-Modus</span>
-                      <ColorSchemeSwitch />
+                      <ColorSchemeMenu />
                     </div>
                   </div>
                 </div>

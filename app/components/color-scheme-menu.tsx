@@ -33,7 +33,7 @@ const options = [
   },
 ] satisfies { id: string; label: string; iconName: IconName }[];
 
-export function ColorSchemeSwitch() {
+export function ColorSchemeMenu() {
   const { colorScheme, userRequested } = useTheme();
   const fetcher = useFetcher();
 

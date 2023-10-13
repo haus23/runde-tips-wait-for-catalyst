@@ -3,7 +3,7 @@ import { useLocation, useParams } from '@remix-run/react';
 import { Link } from 'react-aria-components';
 
 import LogoImage from '#assets/logo.svg';
-import { ColorSchemeSwitch } from '#components/color-scheme-switch';
+import { ColorSchemeMenu } from '#components/color-scheme-menu';
 
 const navItems = [
   { label: 'Tabelle', viewSegment: '' },
@@ -53,7 +53,7 @@ export function NavDesktop() {
         </div>
       </nav>
       <div className="flex items-center">
-        <ColorSchemeSwitch />
+        <ColorSchemeMenu />
       </div>
     </div>
   );
