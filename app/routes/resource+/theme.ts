@@ -1,18 +1,14 @@
 import { json, type ActionFunctionArgs } from '@remix-run/node';
 
-import { z } from 'zod';
-
 import { commitSession, getSession } from '#utils/server/session.server';
-import { ColorScheme } from '#utils/theme';
-
-const RequestedColorScheme = ColorScheme.or(z.literal('system'));
+import { UserColorScheme } from '#utils/theme';
 
 export async function action({ request }: ActionFunctionArgs) {
   const session = await getSession(request);
 
   // Parsing the body
   const bodyParams = await request.formData();
-  const colorScheme = RequestedColorScheme.parse(bodyParams.get('colorScheme'));
+  const colorScheme = UserColorScheme.parse(bodyParams.get('colorScheme'));
 
   const themeColor = 'default';
   const effectiveColorScheme =

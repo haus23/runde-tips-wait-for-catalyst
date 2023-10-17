@@ -9,8 +9,7 @@ import {
   type Selection,
 } from 'react-aria-components';
 
-import { invariant } from '#utils/misc';
-import { useTheme } from '#utils/theme';
+import { UserColorScheme, useTheme } from '#utils/theme';
 
 import { Button } from './(ui)/button';
 import { Icon, type IconName } from './(ui)/icon';
@@ -31,22 +30,19 @@ const options = [
     label: 'System',
     iconName: 'computer',
   },
-] satisfies { id: string; label: string; iconName: IconName }[];
+] satisfies { id: UserColorScheme; label: string; iconName: IconName }[];
 
 export function ColorSchemeMenu() {
   const { colorScheme, userRequested } = useTheme();
   const fetcher = useFetcher();
 
-  const selectedTheme: Selection = new Set([
+  const selectedScheme: Selection = new Set([
     userRequested ? colorScheme : 'system',
   ]);
-  function setSelectedTheme(themeSelection: Key) {
-    invariant(
-      typeof themeSelection === 'string',
-      'Not possible to select all themes',
-    );
+  function setSelectedScheme(schemeSelection: Key) {
+    const scheme = UserColorScheme.parse(schemeSelection);
     fetcher.submit(
-      { colorScheme: themeSelection },
+      { colorScheme: scheme },
       { method: 'POST', action: '/resource/theme' },
     );
   }
@@ -54,7 +50,7 @@ export function ColorSchemeMenu() {
   return (
     <MenuTrigger>
       <Button
-        aria-label="Farbschema wechseln"
+        aria-label="Farbschema-Auswahl öffnen"
         variant="toolbar"
         className={userRequested ? 'text-fg' : 'text-fg-subtle'}
       >
@@ -63,10 +59,11 @@ export function ColorSchemeMenu() {
       </Button>
       <Popover>
         <Menu
+          aria-label="Farbschema-Auswahl Dialog"
           className="flex flex-col gap-y-2 rounded border border-ui-border bg-bg-subtle p-2 text-fg-subtle"
           selectionMode="single"
-          selectedKeys={selectedTheme}
-          onAction={setSelectedTheme}
+          defaultSelectedKeys={selectedScheme}
+          onAction={setSelectedScheme}
         >
           {options.map((o) => (
             <Item

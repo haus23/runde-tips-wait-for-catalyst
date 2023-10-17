@@ -6,8 +6,13 @@ import { loader } from '#root';
 
 import { invariant } from './misc';
 
+// Effective Color Scheme: 'light' or 'dark'
 const ColorScheme = z.literal('light').or(z.literal('dark'));
 type ColorScheme = z.infer<typeof ColorScheme>;
+
+// User-Selected Color Scheme: includes 'system' as well
+const UserColorScheme = ColorScheme.or(z.literal('system'));
+type UserColorScheme = z.infer<typeof UserColorScheme>;
 
 const Theme = z.object({
   themeColor: z.literal('default'),
@@ -32,4 +37,4 @@ function useTheme() {
   };
 }
 
-export { ColorScheme, Theme, useTheme };
+export { ColorScheme, UserColorScheme, Theme, useTheme };
